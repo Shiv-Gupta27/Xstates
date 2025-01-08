@@ -23,9 +23,14 @@ function App() {
 
   useEffect(() => {
     const fetchCountry = async () => {
-      const response = await fetch(CountryApi);
-      const jsonData = await response.json();
-      setcountries(jsonData);
+      try{
+        const response = await fetch(CountryApi);
+        const jsonData = await response.json();
+        setcountries(jsonData);
+      }catch(e){
+        console.error(e);
+      }
+      
     };
     fetchCountry();
   }, []);
@@ -34,18 +39,28 @@ function App() {
     setSelectedCity("");
     setSelectedState("");
     const fetchCountry = async () => {
-      const response = await fetch(stateApi);
-      const jsonData = await response.json();
-      setState(jsonData);
+      try{
+        const response = await fetch(stateApi);
+        const jsonData = await response.json();
+        setState(jsonData);
+      }catch(e){
+        console.error(e);
+      }
+      
     };
     fetchCountry();
   }, [selectcountry]);
 
   useEffect(() => {
     const fetchCountry = async () => {
-      const response = await fetch(cityApi);
-      const jsonData = await response.json();
-      setCity(jsonData);
+      try{
+        const response = await fetch(cityApi);
+        const jsonData = await response.json();
+        setCity(jsonData);
+      }catch(e){
+        console.error(e)
+      }
+      
     };
     fetchCountry();
   }, [selectState]);
